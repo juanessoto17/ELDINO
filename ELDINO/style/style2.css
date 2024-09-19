@@ -1,0 +1,169 @@
+/* Elimina el padding y margen predeterminados */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo general del body */
+body {
+    height: 100vh; /* Altura de la ventana */
+    background: #584040; /* Color de fondo  */
+    display: flex; /* Usa flexbox para centrar el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+}
+
+/* Estilo del contenedor del juego */
+.contenedor {
+    width: 920px; /* Ancho del contenedor */
+    height: 280px; /* Altura del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    position: relative; /* Posicionamiento relativo para los elementos hijos */
+    background: linear-gradient(#b7d6c7, transparent) #ffe2d1; /* Fondo con degradado y color sólido */
+    overflow: hidden; /* Oculta contenido fuera del contenedor */
+}
+
+/* Colores de fondo para diferentes momentos del día */
+.mediodia {
+    background-color: #ffdcf3;
+}
+
+.tarde {
+    background-color: #ffadad;
+}
+
+.noche {
+    background-color: #aca8c7;
+}
+
+/* Estilo del dinosaurio */
+.dino {
+    width: 84px; /* Ancho del dinosaurio */
+    height: 84px; /* Altura del dinosaurio */
+    position: absolute; /* Posicionamiento absoluto dentro del contenedor */
+    bottom: 22px; /* Distancia desde el fondo */
+    left: 42px; /* Distancia desde el borde izquierdo */
+    z-index: 2; /* Asegura que el dinosaurio esté por encima de otros elementos */
+    background: url('../img/dino.png') repeat-x; /* Imagen de fondo para el dinosaurio */
+    background-size: 564px 84px; /* Tamaño de la imagen de fondo */
+}
+
+.dino-agachado {
+    width: 112px;
+    height: 52px;
+    animation: animAgacharse 0.25s steps(2) infinite;
+    background-size: 564px 52px;
+}
+
+/* Animación del dinosaurio corriendo */
+.dino-corriendo {
+    animation: animarDino 0.25s steps(2) infinite; /* Animación continua */
+}
+
+/* Estilo para el dinosaurio cuando se estrella */
+.dino-estrellado {
+    background-position-x: -252px; /* Cambia la posición de la imagen de fondo */
+}
+
+/* Estilo del suelo */
+.suelo {
+    width: 200%; /* Ancho del suelo para repetición continua */
+    height: 42px; /* Altura del suelo */
+    position: absolute; /* Posicionamiento absoluto */
+    bottom: 0; /* Se sitúa en la parte inferior */
+    left: 0; /* Se sitúa en el borde izquierdo */
+    background: url('../img/suelo.png') repeat-x; /* Imagen de fondo para el suelo */
+    background-size: 50% 42px; /* Tamaño de la imagen de fondo */
+}
+
+/* Estilo para los obstáculos (cactus) */
+.cactus {
+    width: 46px; /* Ancho del cactus */
+    height: 96px; /* Altura del cactus */
+    position: absolute; /* Posicionamiento absoluto */
+    bottom: 16px; /* Distancia desde el fondo */
+    left: 600px; /* Distancia desde el borde izquierdo */
+    z-index: 1; /* Asegura que el cactus esté por debajo del dinosaurio */
+    background: url('../img/cactus1.png') no-repeat; /* Imagen de fondo para el cactus */
+}
+
+/* Estilo para el cactus alternativo */
+.cactus2 {
+    width: 98px; /* Ancho del cactus alternativo */
+    height: 66px; /* Altura del cactus alternativo */
+    background: url('../img/cactus2.png') no-repeat; /* Imagen de fondo para el cactus alternativo */
+}
+
+.pajaro {
+    width: 48px;
+    height: 41px;
+    z-index: 3;
+    background: url('../img/pajaro.png') no-repeat;
+    background-size: 96px 41px;
+    animation: pajaroAnim 0.25s steps(2) infinite;
+}
+
+/* Estilo de las nubes */
+.nube {
+    width: 92px; /* Ancho de la nube */
+    height: 26px; /* Altura de la nube */
+    position: absolute; /* Posicionamiento absoluto */
+    z-index: 0; /* Asegura que la nube esté por debajo del dinosaurio */
+    background: url('../img/nube.png') no-repeat; /* Imagen de fondo para la nube */
+    background-size: 92px 26px; /* Tamaño de la imagen de fondo */
+}
+
+/* Estilo del texto de puntuación */
+.score {
+    width: 100px; /* Ancho del contenedor de puntuación */
+    height: 30px; /* Altura del contenedor de puntuación */
+    position: absolute; /* Posicionamiento absoluto */
+    top: 5px; /* Distancia desde la parte superior */
+    right: 15px; /* Distancia desde el borde derecho */
+    z-index: 10; /* Asegura que el texto esté por encima de otros elementos */
+    color: #d48871; /* Color del texto */
+    font-family: Verdana; /* Fuente del texto */
+    font-size: 30px; /* Tamaño de la fuente */
+    font-weight: bold; /* Peso de la fuente */
+    text-align: right; /* Alineación del texto */
+}
+
+/* Estilo para la pantalla de fin del juego */
+.game-over {
+    display: none; /* Inicialmente no se muestra */
+    position: absolute; /* Posicionamiento absoluto */
+    width: 100%; /* Ancho completo del contenedor */
+    text-align: center; /* Centra el texto */
+    color: #7e928b; /* Color del texto */
+    font-size: 30px; /* Tamaño de la fuente */
+    font-family: Verdana; /* Fuente del texto */
+    font-weight: 700; /* Peso de la fuente */
+}
+
+/* Animación del dinosaurio corriendo */
+@keyframes animarDino {
+    from {
+        background-position-x: -84px; /* Posición inicial de la imagen de fondo */
+    }
+    to {
+        background-position-x: -252px; /* Posición final de la imagen de fondo */
+    }
+}
+
+/* Animación del dinosaurio agachado */
+@keyframes animAgacharse {
+    from {
+        background-position: -340px;
+    }
+    to {
+        background-position: -564px;
+    }
+}
+
+@keyframes pajaroAnim {
+    from {
+        background-position: 0px;
+    }
+    to {
+        background-position: -96px;
+    }
+}
